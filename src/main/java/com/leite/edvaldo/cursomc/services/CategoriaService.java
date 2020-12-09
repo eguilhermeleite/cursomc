@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.leite.edvaldo.cursomc.domain.Categoria;
@@ -41,12 +43,19 @@ public class CategoriaService {
 		try {
 			repo.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new com.leite.edvaldo.cursomc.services.exceptions.DataIntegrityViolationException("Impossível excluir essa categoria pois existe produto(s) associado(s)");
+			throw new com.leite.edvaldo.cursomc.services.exceptions.DataIntegrityViolationException(
+					"Impossível excluir essa categoria pois existe produto(s) associado(s)");
 		}
 	}
 
 	public List<Categoria> findAll() {
 		return repo.findAll();
+	}
+
+	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage,
+				org.springframework.data.domain.Sort.Direction.valueOf(direction), orderBy);
+		return repo.findAll(pageRequest);
 	}
 
 }
