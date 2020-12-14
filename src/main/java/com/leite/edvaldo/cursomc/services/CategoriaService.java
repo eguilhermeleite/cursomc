@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.leite.edvaldo.cursomc.domain.Categoria;
+import com.leite.edvaldo.cursomc.dto.CategoriaDTO;
 import com.leite.edvaldo.cursomc.repositories.CategoriaRepository;
 import com.leite.edvaldo.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -56,6 +57,10 @@ public class CategoriaService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage,
 				org.springframework.data.domain.Sort.Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 
 }
