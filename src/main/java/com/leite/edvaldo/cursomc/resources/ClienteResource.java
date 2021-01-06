@@ -26,14 +26,14 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService service;
 
-	@RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
-		
+
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
-		
+
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id) {
 		Cliente obj = service.fromDTO(objDto);
@@ -49,7 +49,7 @@ public class ClienteResource {
 
 	}
 
-	// listar somente as categorias sem os produtos
+	// listar somente os clientes
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
 		List<Cliente> list = service.findAll();
@@ -68,5 +68,3 @@ public class ClienteResource {
 	}
 
 }
-
-

@@ -83,6 +83,7 @@ public class CursomcApplication implements CommandLineRunner {
 		Cidade c3 = new Cidade(null, "Campinas", est2);
 		Cidade c4 = new Cidade(null, "Vinhedo", est2);
 
+		// cliente 1
 		Cliente cli1 = new Cliente(null, "Edvaldo Leite", "eguilhermeleite@gmail.com", "22117214860",
 				TipoCliente.PESSOA_FISICA);
 		cli1.getTelefones().addAll(Arrays.asList("(11)96125-7615", "(11)96932-4269"));
@@ -92,6 +93,18 @@ public class CursomcApplication implements CommandLineRunner {
 
 		Endereco e2 = new Endereco(null, "Rua Antunes Ferreira", "102", "-", "Siopi", "03252-025", cli1, c4);
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		
+		// cliente 2
+		Cliente cli2 = new Cliente(null, "Luciene da Silva Leite", "lsilvaleite14@gmail.com", "27158787885",
+				TipoCliente.PESSOA_FISICA);
+		cli2.getTelefones().addAll(Arrays.asList("(11)96125-7615", "(11)96932-4269"));
+
+		Endereco e3 = new Endereco(1, "Rua Manuel Dias de Oliveira", "59", "Torre A Apto. 172", "Butantã",
+				"05528-010", cli2, c2);
+
+		Endereco e4 = new Endereco(2, "Rua Antunes Ferreira", "102", "-", "Siopi", "03252-025", cli2, c4);
+		cli2.getEnderecos().addAll(Arrays.asList(e1, e2));
+		
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		Pedido ped1 = new Pedido(null, sdf.parse("25/05/2020 14:23"), cli1, e1);
@@ -134,8 +147,8 @@ public class CursomcApplication implements CommandLineRunner {
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
-		clienteRepository.saveAll(Arrays.asList(cli1));
-		enderecoRepository.saveAll(Arrays.asList(e1, e2));
+		clienteRepository.saveAll(Arrays.asList(cli1,cli2));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2,e3,e4));
 		pedidoRepository.saveAll(Arrays.asList(ped1));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1,pagto2));
 		itemPedidoRepository.saveAll(Arrays.asList(ip1,ip2,ip3));
