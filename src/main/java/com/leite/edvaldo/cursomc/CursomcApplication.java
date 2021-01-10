@@ -88,21 +88,16 @@ public class CursomcApplication implements CommandLineRunner {
 				TipoCliente.PESSOA_FISICA);
 		cli1.getTelefones().addAll(Arrays.asList("(11)96125-7615", "(11)96932-4269"));
 
-		Endereco e1 = new Endereco(null, "Rua Manuel Dias de Oliveira", "59", "Torre A Apto. 172", "Butantã",
-				"05528-010", cli1, c2);
-
-		Endereco e2 = new Endereco(null, "Rua Antunes Ferreira", "102", "-", "Siopi", "03252-025", cli1, c4);
-		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
-		
 		// cliente 2
 		Cliente cli2 = new Cliente(null, "Luciene da Silva Leite", "lsilvaleite14@gmail.com", "27158787885",
 				TipoCliente.PESSOA_FISICA);
 		cli2.getTelefones().addAll(Arrays.asList("(11)96125-7615", "(11)96932-4269"));
-
-		Endereco e3 = new Endereco(1, "Rua Manuel Dias de Oliveira", "59", "Torre A Apto. 172", "Butantã",
-				"05528-010", cli2, c2);
-
-		Endereco e4 = new Endereco(2, "Rua Antunes Ferreira", "102", "-", "Siopi", "03252-025", cli2, c4);
+	
+		Endereco e1 = new Endereco(null, "Rua Manuel Dias de Oliveira", "59", "Torre A Apto. 172", "Butantã",
+				"05528-010", cli1, c2);
+		Endereco e2 = new Endereco(null, "Rua Antunes Ferreira", "102", "-", "Siopi", "03252-025", cli1, c4);
+		
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		cli2.getEnderecos().addAll(Arrays.asList(e1, e2));
 		
 
@@ -118,12 +113,11 @@ public class CursomcApplication implements CommandLineRunner {
 		ped2.setPagamento(pagto2);
 
 		cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
-		
+
 		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.0, 1, 2000.00);
 		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.0, 2, 80.00);
 		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.0, 1, 800.00);
-		
-	
+
 		// Objetos
 		est1.getCidades().addAll(Arrays.asList(c1));
 		est2.getCidades().addAll(Arrays.asList(c2, c3));
@@ -134,24 +128,24 @@ public class CursomcApplication implements CommandLineRunner {
 		p1.getCategorias().addAll(Arrays.asList(cat1));
 		p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
 		p3.getCategorias().addAll(Arrays.asList(cat1));
-		
-		ped1.getItens().addAll(Arrays.asList(ip1,ip2));
+
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
 		ped2.getItens().addAll(Arrays.asList(ip3));
-		
+
 		p1.getItens().addAll(Arrays.asList(ip1));
 		p2.getItens().addAll(Arrays.asList(ip3));
 		p3.getItens().addAll(Arrays.asList(ip2));
 
 		// repositorios
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2,cat3,cat4,cat5,cat6,cat7,cat8));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
-		clienteRepository.saveAll(Arrays.asList(cli1,cli2));
-		enderecoRepository.saveAll(Arrays.asList(e1, e2,e3,e4));
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2));
 		pedidoRepository.saveAll(Arrays.asList(ped1));
-		pagamentoRepository.saveAll(Arrays.asList(pagto1,pagto2));
-		itemPedidoRepository.saveAll(Arrays.asList(ip1,ip2,ip3));
+		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 
 	}
 
