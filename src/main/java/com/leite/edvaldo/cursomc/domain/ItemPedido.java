@@ -73,6 +73,10 @@ public class ItemPedido implements Serializable {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
+	
+	public double getSubTotal() {
+		return (this.getPreco() - this.getDesconto()) * this.getQuantidade();
+	}
 
 	@Override
 	public int hashCode() {
