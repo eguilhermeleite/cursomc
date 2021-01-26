@@ -1,6 +1,8 @@
 package com.leite.edvaldo.cursomc.domain;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -15,6 +17,7 @@ public class ItemPedido implements Serializable {
 	@EmbeddedId
 	private ItemPedidoPK id = new ItemPedidoPK();
 
+	
 	private Double desconto;
 	private Integer quantidade;
 	private Double preco;
@@ -108,6 +111,22 @@ public class ItemPedido implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		NumberFormat money = NumberFormat.getCurrencyInstance();
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy hh:mm:ss");
+		StringBuilder builder = new StringBuilder();
+		builder.append("\n");
+		builder.append(getProduto().getNome());
+		builder.append(" - Qtd: ");
+		builder.append(getQuantidade());
+		builder.append(" - Preço unitário: ");
+		builder.append(money.format(getPreco()));
+		builder.append(" - Sub-Total: ");
+		builder.append(money.format(getSubTotal()));
+		return builder.toString();
 	}
 
 }
