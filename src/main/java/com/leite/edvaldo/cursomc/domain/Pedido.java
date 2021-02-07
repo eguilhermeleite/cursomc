@@ -144,7 +144,7 @@ public class Pedido implements Serializable {
 		NumberFormat money = NumberFormat.getCurrencyInstance();
 	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy hh:mm:ss");
 		StringBuilder builder = new StringBuilder();
-		builder.append("\nPedido número: ");
+		builder.append("\n\n*******************************************\nPedido número: ");
 		builder.append(getId());
 		builder.append(" \nInstante: ");
 		builder.append(sdf.format(getInstante()));
