@@ -14,7 +14,6 @@ import com.leite.edvaldo.cursomc.domain.enums.EstadoPagamento;
 import com.leite.edvaldo.cursomc.repositories.ItemPedidoRepository;
 import com.leite.edvaldo.cursomc.repositories.PagamentoRepository;
 import com.leite.edvaldo.cursomc.repositories.PedidoRepository;
-import com.leite.edvaldo.cursomc.repositories.ProdutoRepository;
 import com.leite.edvaldo.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -31,13 +30,13 @@ public class PedidoService {
 
 	@Autowired
 	ProdutoService produtoService;
-	
+
 	@Autowired
 	ItemPedidoRepository itemPedidoRepository;
-	
+
 	@Autowired
 	ClienteService clienteService;
-	
+
 	@Autowired
 	EmailService emailService;
 
@@ -69,7 +68,7 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-	    emailService.sendOrderConfirmationEmail(obj);
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
 }
